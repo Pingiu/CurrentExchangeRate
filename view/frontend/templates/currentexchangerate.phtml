@@ -1,0 +1,25 @@
+<?php
+/** @var \Perspective\CurrentExchangeRate\Block\Template $block */
+$viewModel = $block->getViewModel();
+$currentProduct = $viewModel->getCurrentProduct();
+if ($viewModel->isEnabled())
+{
+    if ($viewModel->isEnabledUAH())
+    {
+        echo "<h4>Цена в гривнах:</h4>";
+        echo $currentProduct->getFinalPrice()*$viewModel->getUAH()." грн.";
+        echo "<br>";
+    }
+    if ($viewModel->isEnabledUSD())
+    {
+        echo "<h4>Цена в долларах:</h4>";
+        echo $currentProduct->getFinalPrice()*$viewModel->getUSD()." $";
+        echo "<br>";
+    }
+    if ($viewModel->isEnabledEURO())
+    {
+        echo "<h4>Цена в евро:</h4>";
+        echo $currentProduct->getFinalPrice()*$viewModel->getEURO()." €";
+    }
+}
+?>
